@@ -23,7 +23,6 @@ export default function ColorPickerHooks({ options }) {
         backgroundColor: activeBackground,
       }}
     >
-      <h2 className="title"> Color Picker Hooks</h2>
       <div className="colorBox">
         {options.map(({ lable, color }, index, array) => {
           // console.log(array); // вихідний масив
