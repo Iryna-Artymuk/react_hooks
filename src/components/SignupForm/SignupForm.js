@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import styles from './SignupForm.module.css';
-
+import Button from '../Button/Button';
 export default function SignupForm() {
   // деструктуризація масиву з обєкту useState
   // перше значення це ключ а друге функція для його оновлення в стейті
@@ -51,7 +51,7 @@ export default function SignupForm() {
         />
       </label>
 
-      <button type="submit">Зарегистрироваться</button>
+      <Button type="submit">Зарегистрироваться</Button>
     </form>
   );
 }
