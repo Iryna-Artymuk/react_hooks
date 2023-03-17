@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <ColorPicker options={data} />
+        {/* <ColorPicker options={data} /> */}
         <ColorPickerHooks options={data} />
         <SignupForm />
       </>
