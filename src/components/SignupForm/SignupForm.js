@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import styles from './SignupForm.module.css';
 import Button from '../Button/Button';
+
+// custom Hook use LocalStorage
+import useLocalStorage from '../../hooks/hooks';
+
 export default function SignupForm() {
+  console.log('render ');
   // деструктуризація масиву з обєкту useState
   // перше значення це ключ а друге функція для його оновлення в стейті
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState(
+  //   () => JSON.parse(window.localStorage.getItem('email')) ?? '' // лінва загрузка  звернення до докалсторедж тільки один раз
+  //   //без неї запит в локалсторедж буде кожного разу при запуску функції
+  // );
+  // const [password, setPassword] = useState(
+  //   () => JSON.parse(window.localStorage.getItem('password  ')) ?? ''
+  // );
   // функція яка буде по настанні події onChange  викликати іншу функцію
   // яка буде змінювати значенння змінної в стейті
   // const handelEmailChange = event => {
@@ -15,6 +25,7 @@ export default function SignupForm() {
   // const handePasswordChange = event => {
   //   setPassword(event.target.value);
   // };
+  // можна замвнити на універсалну функцію handelChange
   const handelChange = event => {
     const inputName = event.target.name;
     const inputValue = event.target.value;
@@ -29,6 +40,20 @@ export default function SignupForm() {
         return;
     }
   };
+  // useEffect(() => {
+  //   window.localStorage.setItem('email', JSON.stringify(email), [email]);
+  // });
+
+  // useEffect(() => {
+  //   window.localStorage.setItem('password', JSON.stringify(password), [
+  //     password,
+  //   ]);
+  // });
+
+  // with customHooks
+  const [email, setEmail] = useLocalStorage('email', ''); // деструкткризація масиву в нові змінні https://learn.javascript.ru/destructuring-assignment
+  const [password, setPassword] = useLocalStorage('password', '');
+  console.log(useLocalStorage('email', ''));
   return (
     <form className={styles.form} autoComplete="on">
       <label className={styles.label}>
