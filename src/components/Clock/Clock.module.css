@@ -1,8 +1,13 @@
 .container {
+  justify-content: center;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .clockface {
-  font-size: 32px x;
+  font-size: 32px;
   font-weight: 500;
+  margin: 0 0 20px 0;
 }

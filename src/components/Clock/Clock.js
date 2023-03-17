@@ -1,11 +1,39 @@
-// import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './Clock.module.css';
 import Button from '../Button/Button';
 export default function Clock() {
+  const [time, setTime] = useState(() => new Date());
+  // let intervalId = null; // так як функція на кожному рендері створюється заново тому згачення intervalid не зберігається..
+  // для отримання стабільного значення яке не перезаписується треба використовувати useRef
+  // створюється обєкт з кластивість current де буде початкове значення
+
+  let intervalId = useRef(null);
+
+  // useEffect(() => {
+  //   intervalId.current = setInterval(() => {
+  //     console.log(intervalId.current);
+  //     setTime(new Date());
+  //   }, 1000);
+  // }, []);
+
+  const stopTime = () => clearInterval(intervalId.current);
+  const startTime = () =>
+    (intervalId.current = setInterval(() => {
+      console.log(intervalId.current);
+      setTime(new Date());
+    }, 1000));
   return (
     <div className={styles.container}>
-      <p className={styles.clockface}>Текущее время: {0}</p>
-      <Button type="button">Остановить</Button>
+      <p className={styles.clockface}>
+        Текущее время:{time.toLocaleTimeString()}
+      </p>
+      <Button type="button" onClick={startTime}>
+        Start
+      </Button>
+      <br />
+      <Button type="button" onClick={stopTime}>
+        Stop
+      </Button>
     </div>
   );
 }

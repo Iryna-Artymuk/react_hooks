@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 import styles from './SignupForm.module.css';
 import Button from '../Button/Button';
@@ -53,7 +53,7 @@ export default function SignupForm() {
   // with customHooks
   const [email, setEmail] = useLocalStorage('email', ''); // деструкткризація масиву в нові змінні https://learn.javascript.ru/destructuring-assignment
   const [password, setPassword] = useLocalStorage('password', '');
-  console.log(useLocalStorage('email', ''));
+
   return (
     <form className={styles.form} autoComplete="on">
       <label className={styles.label}>

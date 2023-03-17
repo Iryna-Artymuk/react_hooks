@@ -18,6 +18,10 @@ const StyledSection = styled.section`
 
   margin: 15px auto;
   padding: 20px;
+
+  h1 {
+    margin: 0;
+  }
 `;
 
 // .title {
