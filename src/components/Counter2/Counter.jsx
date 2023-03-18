@@ -6,17 +6,20 @@ import Controls from './Controls';
 function CountReduser(prevState, actions) {
   switch (actions.type) {
     case 'Decrement':
-      return prevState - actions.payload;
+      return { ...prevState, value: prevState.value - actions.payload };
     case 'Increment':
-      return prevState + actions.payload;
+      return { ...prevState, value: prevState.value + actions.payload };
     default:
       return prevState;
   }
 }
+const iniyState = {
+  value: 0,
+};
 
-export default function Counter({ startValue }) {
+export default function Counter() {
   // const [value, setValue] = useState(startValue);
-  const [value, dispatch] = useReducer(CountReduser, startValue);
+  const [state, dispatch] = useReducer(CountReduser, iniyState);
 
   return (
     <div
@@ -31,7 +34,7 @@ export default function Counter({ startValue }) {
         fontSize: '48px',
       }}
     >
-      <span> {value}</span>
+      <span> {state.value}</span>
       <Controls
         OnDecrement={() => dispatch({ type: 'Decrement', payload: 1 })}
         OnIncrement={() => dispatch({ type: 'Increment', payload: 1 })}
