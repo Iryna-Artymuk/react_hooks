@@ -16,8 +16,8 @@ class App extends Component {
   render() {
     return (
       <>
-        <Section title="Сounter   Hooks UseEffect">
-          <Counter2 />
+        <Section title="Сounter   Hooks UseReduser">
+          <Counter2 startValue={0} />
         </Section>
         <Section title="  Hooks  useState, useEffect serch pokemon ">
           <PokemonView />

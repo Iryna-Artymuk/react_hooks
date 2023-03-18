@@ -7,7 +7,6 @@ import Button from '../Button/Button';
 import useLocalStorage from '../../hooks/hooks';
 
 export default function SignupForm() {
-  console.log('render ');
   // деструктуризація масиву з обєкту useState
   // перше значення це ключ а друге функція для його оновлення в стейті
   // const [email, setEmail] = useState(
