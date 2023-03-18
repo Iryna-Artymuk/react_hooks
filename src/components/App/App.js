@@ -8,6 +8,7 @@ import SignupForm from '../SignupForm/SignupForm';
 import Counter from '../Counter/Counter';
 import Clock from '../Clock/Clock';
 import Section from '../Section/Section';
+import Counter2 from '../Counter2/Counter';
 
 import PokemonView from '../Fetch Pokemon/PokemonView';
 
@@ -15,6 +16,9 @@ class App extends Component {
   render() {
     return (
       <>
+        <Section title="Сounter   Hooks UseEffect">
+          <Counter2 />
+        </Section>
         <Section title="  Hooks  useState, useEffect serch pokemon ">
           <PokemonView />
         </Section>

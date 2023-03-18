@@ -1,5 +1,3 @@
-import PokemonDataView from './PokemonDataView';
-import pendingImage from './pending.png';
 import { StyledSpinner } from './StyledPendind';
 const styles = {
   spinner: {
