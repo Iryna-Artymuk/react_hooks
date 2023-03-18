@@ -1,16 +1,22 @@
-import { useReducer, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useReducer } from 'react';
+
 import Controls from './Controls';
+//prevState десьруктурихується з useReducer  actions це оюєкт з даними
+// по яким буде виконуватись switch
+function CountReduser(prevState, actions) {
+  switch (actions.type) {
+    case 'Decrement':
+      return prevState - actions.payload;
+    case 'Increment':
+      return prevState + actions.payload;
+    default:
+      return prevState;
+  }
+}
 
 export default function Counter({ startValue }) {
-  const [value, setValue] = useState(startValue);
-
-  const hendelIncrement = event => {
-    setValue(prev => prev + 1);
-  };
-  const hendelDecrement = () => {
-    setValue(prev => prev - 1);
-  };
+  // const [value, setValue] = useState(startValue);
+  const [value, dispatch] = useReducer(CountReduser, startValue);
 
   return (
     <div
@@ -26,7 +32,10 @@ export default function Counter({ startValue }) {
       }}
     >
       <span> {value}</span>
-      <Controls OnDecrement={hendelDecrement} OnIncrement={hendelIncrement} />
+      <Controls
+        OnDecrement={() => dispatch({ type: 'Decrement', payload: 1 })}
+        OnIncrement={() => dispatch({ type: 'Increment', payload: 1 })}
+      />
     </div>
   );
 }

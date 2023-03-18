@@ -11,7 +11,6 @@ export default function Clock() {
 
   useEffect(() => {
     intervalId.current = setInterval(() => {
-      console.log(intervalId.current);
       setTime(new Date());
     }, 1000);
     return () => {
