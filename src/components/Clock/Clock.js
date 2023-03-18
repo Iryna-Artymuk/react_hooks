@@ -9,27 +9,32 @@ export default function Clock() {
 
   let intervalId = useRef(null);
 
-  // useEffect(() => {
-  //   intervalId.current = setInterval(() => {
-  //     console.log(intervalId.current);
-  //     setTime(new Date());
-  //   }, 1000);
-  // }, []);
-
-  const stopTime = () => clearInterval(intervalId.current);
-  const startTime = () =>
-    (intervalId.current = setInterval(() => {
+  useEffect(() => {
+    intervalId.current = setInterval(() => {
       console.log(intervalId.current);
       setTime(new Date());
-    }, 1000));
+    }, 1000);
+    return () => {
+      console.log('Это функция очистки перед следующим вызовом useEffect');
+      stopTime();
+    }; // з хуку  useEffect можна повернути функцію яка буде викликана
+    // одразу як тільки компонент видаляється з dom дерева
+  }, []);
+
+  const stopTime = () => clearInterval(intervalId.current);
+  // const startTime = () =>
+  //   (intervalId.current = setInterval(() => {
+  //     console.log(intervalId.current);
+  //     setTime(new Date());
+  //   }, 1000));
   return (
     <div className={styles.container}>
       <p className={styles.clockface}>
         Текущее время:{time.toLocaleTimeString()}
       </p>
-      <Button type="button" onClick={startTime}>
+      {/* <Button type="button" onClick={startTime}>
         Start
-      </Button>
+      </Button> */}
       <br />
       <Button type="button" onClick={stopTime}>
         Stop
