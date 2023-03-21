@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 // custom Hook use LocalStorage
 import useLocalStorage from '../../hooks/hooks';
 
-export default function SignupForm() {
+export default function SignupForm({ logIn }) {
   // деструктуризація масиву з обєкту useState
   // перше значення це ключ а друге функція для його оновлення в стейті
   // const [email, setEmail] = useState(
@@ -39,6 +39,11 @@ export default function SignupForm() {
         return;
     }
   };
+  function handelSubmit(event) {
+    event.preventDefault();
+    logIn(email);
+    console.log(event.target);
+  }
   // useEffect(() => {
   //   window.localStorage.setItem('email', JSON.stringify(email), [email]);
   // });
@@ -54,7 +59,7 @@ export default function SignupForm() {
   const [password, setPassword] = useLocalStorage('password', '');
 
   return (
-    <form className={styles.form} autoComplete="on">
+    <form className={styles.form} autoComplete="on" onSubmit={handelSubmit}>
       <label className={styles.label}>
         <span>Почта</span>
         <input

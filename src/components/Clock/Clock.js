@@ -14,7 +14,7 @@ export default function Clock() {
       setTime(new Date());
     }, 1000);
     return () => {
-      console.log('Это функция очистки перед следующим вызовом useEffect');
+      // console.log('Это функция очистки перед следующим вызовом useEffect');
       stopTime();
     }; // з хуку  useEffect можна повернути функцію яка буде викликана
     // одразу як тільки компонент видаляється з dom дерева

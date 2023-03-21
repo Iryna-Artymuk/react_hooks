@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Button from '../Button/Button';
+import Button from '../../Button/Button';
 
 export default function Counter() {
   const [valueCounterA, setValueCounterA] = useState(0);
